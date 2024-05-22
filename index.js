@@ -4,8 +4,10 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
-app.get("/scrape", (req, res) => {
-    scrapeLogic(res);
+app.get("/:route", (req, res) => {
+    // Extract route name from request parameters
+    const { route } = req.params;
+    scrapeLogic(res, route);
 });
 
 app.get("/", (req, res) => {
